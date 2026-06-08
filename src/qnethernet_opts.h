@@ -128,15 +128,15 @@
 // The function should return 'true' if the frame should go straight to raw
 // frame processing, and 'false' otherwise.
 //
-// #define QNETHERNET_HOOK_RAW_FRAME_FILTER(p, netif) \
-//   qnethernet_raw_frame_filter((p), (netif))
-// #ifdef __cplusplus
-// extern "C" {
-// #endif  // __cplusplus
-// bool qnethernet_raw_frame_filter(struct pbuf* p, struct netif* netif);
-// #ifdef __cplusplus
-// }  // extern "C"
-// #endif  // __cplusplus
+#define QNETHERNET_HOOK_RAW_FRAME_FILTER(p, netif) \
+   qnethernet_raw_frame_filter((p), (netif))
+#ifdef __cplusplus
+extern "C" {
+#endif  // __cplusplus
+bool qnethernet_raw_frame_filter(struct pbuf* p, struct netif* netif);
+#ifdef __cplusplus
+}  // extern "C"
+#endif  // __cplusplus
 
 // Provides default implementations of the altcp interface functions.
 #ifndef QNETHERNET_PROVIDE_ALTCP_DEFAULT_FUNCTIONS
