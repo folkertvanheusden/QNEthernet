@@ -128,6 +128,7 @@
 // The function should return 'true' if the frame should go straight to raw
 // frame processing, and 'false' otherwise.
 //
+#include <stdbool.h>
 #define QNETHERNET_HOOK_RAW_FRAME_FILTER(p, netif) \
    qnethernet_raw_frame_filter((p), (netif))
 #ifdef __cplusplus
