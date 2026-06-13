@@ -942,8 +942,17 @@ FLASHMEM bool init() {
     s_txRing[i].buffer  = &s_txBufs[i * BUF_SIZE];
     s_txRing[i].status  = kEnetTxBdTransmitCrc;
     s_txRing[i].extend1 = kEnetTxBdTxInterrupt  |
+#if !QNETHERNET_ENABLE_RAW_FRAME_SUPPORT
                           kEnetTxBdProtChecksum |
+#endif
+#if (CHECKSUM_GEN_UDP == 0) || \
+    (CHECKSUM_GEN_TCP == 0) || \
+    (CHECKSUM_GEN_ICMP == 0) || \
+    (CHECKSUM_GEN_IP == 0)
                           kEnetTxBdIpHdrChecksum;
+#else
+			  0;
+#endif
   }
   s_txRing[TX_SIZE - 1].status |= kEnetTxBdWrap;
 

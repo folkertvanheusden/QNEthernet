@@ -15,6 +15,7 @@
 #define ETH_PAD_SIZE 2  /* 0 */
 
 // Checksum options
+#if !QNETHERNET_ENABLE_RAW_FRAME_SUPPORT
 #define CHECKSUM_GEN_IP      0  /* 1 */
 #define CHECKSUM_GEN_UDP     0  /* 1 */
 #define CHECKSUM_GEN_TCP     0  /* 1 */
@@ -25,3 +26,15 @@
 #define CHECKSUM_CHECK_TCP   0  /* 1 */
 #define CHECKSUM_CHECK_ICMP  0  /* 1 */
 // #define CHECKSUM_CHECK_ICMP6 1
+#else
+#define CHECKSUM_GEN_IP      1  /* 0 */
+#define CHECKSUM_GEN_UDP     1  /* 0 */
+#define CHECKSUM_GEN_TCP     1  /* 0 */
+#define CHECKSUM_GEN_ICMP    1  /* 0 */
+// #define CHECKSUM_GEN_ICMP6   1
+#define CHECKSUM_CHECK_IP    1  /* 0 */
+#define CHECKSUM_CHECK_UDP   1  /* 0 */
+#define CHECKSUM_CHECK_TCP   1  /* 0 */
+#define CHECKSUM_CHECK_ICMP  1  /* 0 */
+// #define CHECKSUM_CHECK_ICMP6 1
+#endif
